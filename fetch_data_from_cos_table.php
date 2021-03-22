@@ -1,18 +1,18 @@
 <?php
 include 'C:\xampp\htdocs\TARP\TARP\fetch_data_from_ESP.php';
-$conn1 = new mysqli($servername, $username, $password, $dbname);
-if ($conn1->connect_error) {
-    die("Connection failed: " . $conn1->connect_error);
-}
+//if ($conn1->connect_error) {
+//    die("Connection failed: " . $conn1->connect_error);
+//}
 $sql = "SELECT RFID, NAME, TYPE, QUANTITY, PRICE, FINAL_AMOUNT FROM customer_products";
 echo '<table class="center" border ="1" cellspacing="5" cellpadding="5">
       <tr>
-        <td>ID</td>
-        <td>Sensor</td>
-        <td>Location</td>
-        <td>Value 1</td>
-        <td>Value 2</td>
-        <td>Value 3</td>
+        <td>RFID</td>
+        <td>NAME</td>
+        <td>TYPE</td>
+        <td>QUANTITY</td>
+        <td>PRICE</td>
+        <td>FINAL_AMOUNT</td>
+        <td>Operation</td>
       </tr>';
 
 if ($result = $conn->query($sql)) {
@@ -38,6 +38,3 @@ if ($result = $conn->query($sql)) {
 }
 
  ?>
-</table>
-</body>
-</html>
