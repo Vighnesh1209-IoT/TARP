@@ -7,7 +7,7 @@ $password = "";
 $dbname = "smarttrolley";
 
 
-$key = "77289";
+$key = "492939";
 $api_key_value = "dd";
 
 //Getting value form Nodemcu
@@ -16,6 +16,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   $api_key = test_input($_POST["api_key"]);
   if($api_key == $api_key_value){
     $RFID_ID = test_input($_POST["RFIDtag"]);
+
   }
 }
 
