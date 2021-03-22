@@ -1,13 +1,5 @@
 <?php
-
-//Server details
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "smarttrolley";
-
-
-$key = "782902";
+$key = "492939";
 $api_key_value = "dd";
 
 //Getting value form Nodemcu
@@ -20,11 +12,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   }
 }
 
-//database Connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'C:\xampp\htdocs\TARP\TARP\dbConn.php';
 
 //fetching data from default_products for one specific RFIDtag
 $sql = "SELECT RFID, NAME, TYPE, PRICE FROM default_products WHERE RFID = $key";
@@ -41,9 +29,9 @@ if ($result = $conn->query($sql)) {
         $result1 = mysqli_query($conn,$query1);
         if ($result1) {
           if (mysqli_num_rows($result1) > 0) {
-            echo 'found!';
+              $found = "found";
           } else {
-            echo 'not found';
+              $found = "notfound";
             $sql2 = "INSERT INTO customer_products(RFID, NAME, TYPE, PRICE) VALUES ('" . $sensor . "', '" . $location . "', '" . $value1 . "', '" . $value2 . "')";
             if ($conn->query($sql2) === TRUE) {
                   echo "New record created successfully";
