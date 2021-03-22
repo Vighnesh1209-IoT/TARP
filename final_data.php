@@ -35,17 +35,7 @@ if ($result = $conn->query($sql)) {
         $value2 = $row["PRICE"];
 
         //send the fetched data to coustumer product
-        $query1 = "SELECT * FROM coustumer_products WHERE RFID = '$key'";
-        $result1 = mysql_query($query);
-        if ($result1) {
-          if (mysql_num_rows($result1) > 0) {
-            echo 'found!';
-          } else {
-            echo 'not found';
-          }
-        } else {
-          echo 'Error: '.mysql_error();
-        }
+
       }
     $result->free();
 
