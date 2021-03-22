@@ -24,3 +24,10 @@ else
 }
 
 }
+
+
+Work:
+    Delete
+    QUANTITY
+    FINAL_AMOUNT
+    html
