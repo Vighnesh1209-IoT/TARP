@@ -4,7 +4,7 @@ $total = 0;
 $final_amount = 0;
 $sql = "SELECT RFID, NAME, TYPE, QUANTITY, PRICE, FINAL_AMOUNT FROM customer_products";
 ?>
-<table align="center" border = "2" cellspacing="5" cellpadding="5">
+<table align="centre" border = "2" cellspacing="5" cellpadding="5">
       <tr>
         <td>RFID</td>
         <td>NAME</td>
@@ -44,4 +44,4 @@ if ($result = $conn->query($sql)) {
           <td><?php echo "TOTAL AMOUNT"?></td>
           <td><?php echo "$final_amount"?></td>
           <td><?php echo ""?></td>
-          <td><?php echo ""?></td>
+          <td><a href="clear_db.php<?php echo $row['RFID']; ?>">Admin</a>
