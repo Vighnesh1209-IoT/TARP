@@ -17,7 +17,7 @@ if(isset($_POST['update'])) // when click on Update button
     if($edit)
     {
         mysqli_close($conn); // Close connection
-        header("location:home.php"); // redirects to all records page
+        header("location:cart.php"); // redirects to all records page
         exit;
     }
     else
