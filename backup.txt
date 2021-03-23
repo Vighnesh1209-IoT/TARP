@@ -1,0 +1,212 @@
+//fetching data
+<?php
+$key = "492939";
+$api_key_value = "dd";
+
+//Getting value form Nodemcu
+$api_key = $RFID_ID = "";
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+  $api_key = test_input($_POST["api_key"]);
+  if($api_key == $api_key_value){
+    $RFID_ID = test_input($_POST["RFIDtag"]);
+
+  }
+}
+
+include 'C:\xampp\htdocs\TARP\TARP\dbConn.php';
+
+//fetching data from default_products for one specific RFIDtag
+$sql = "SELECT RFID, NAME, TYPE, PRICE FROM default_products WHERE RFID = $key";
+
+if ($result = $conn->query($sql)) {
+    while ($row = $result->fetch_assoc()) {
+        $sensor = $row["RFID"];
+        $location = $row["NAME"];
+        $value1 = $row["TYPE"];
+        $value2 = $row["PRICE"];
+
+        //send the fetched data to coustumer product(Check if its already present and then add)
+        $query1 = "SELECT RFID FROM customer_products WHERE RFID = $key";
+        $result1 = mysqli_query($conn,$query1);
+        if ($result1) {
+          if (mysqli_num_rows($result1) > 0) {
+              $found = "found";
+          } else {
+              $found = "notfound";
+            $sql2 = "INSERT INTO customer_products(RFID, NAME, TYPE, PRICE) VALUES ('" . $sensor . "', '" . $location . "', '" . $value1 . "', '" . $value2 . "')";
+            if ($conn->query($sql2) === TRUE) {
+                  echo "New record created successfully";
+              }
+              else {
+                  echo "Error: " . $sql2 . "<br>" . $conn->error;
+              }
+          }
+        } else {
+          echo 'Error';
+        }
+      }
+    $result->free();
+
+}
+
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
+
+
+//costumer_table
+<?php
+include 'C:\xampp\htdocs\TARP\TARP\fetch_data.php';
+$total = 0;
+$final_amount = 0;
+$sql = "SELECT RFID, NAME, TYPE, QUANTITY, PRICE, FINAL_AMOUNT FROM customer_products";
+?>
+<table align="center" border = "2" cellspacing="5" cellpadding="5">
+      <tr>
+        <td>RFID</td>
+        <td>NAME</td>
+        <td>TYPE</td>
+        <td>QUANTITY</td>
+        <td>PRICE</td>
+        <td>FINAL_AMOUNT</td>
+        <td>EDIT</td>
+        <td>DELETE</td>
+      </tr>
+<?php
+if ($result = $conn->query($sql)) {
+    while ($row = $result->fetch_assoc()) {
+      $total = $row["QUANTITY"]*$row['PRICE'];
+?>
+        <tr>
+          <td><?php echo $row["RFID"]?></td>
+          <td><?php echo $row["NAME"]?></td>
+          <td><?php echo $row["TYPE"]?></td>
+          <td><?php echo $row["QUANTITY"]?></td>
+          <td><?php echo $row["PRICE"]?></td>
+          <td><?php echo "$total" ?></td>
+          <td><a href="edit.php?id=<?php echo $row['RFID']; ?>">Edit</a></td>
+          <td><a href="delete.php?id=<?php echo $row['RFID']; ?>">Delete</a>
+        </tr>
+<?php
+  $final_amount = $final_amount + $total;
+    }
+    $result->free();
+}
+?>
+        <tr>
+          <td><?php echo ""?></td>
+          <td><?php echo ""?></td>
+          <td><?php echo ""?></td>
+          <td><?php echo ""?></td>
+          <td><?php echo "TOTAL AMOUNT"?></td>
+          <td><?php echo "$final_amount"?></td>
+          <td><?php echo ""?></td>
+          <td><?php echo ""?></td>
+
+
+//dbconn.php
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "smarttrolley";
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
+//delete.php
+<?php
+
+include "dbConn.php"; // Using database connection file here
+
+$id = $_GET['id']; // get id through query string
+
+$del = mysqli_query($conn,"delete from customer_products where RFID = '$id'"); // delete query
+
+if($del)
+{
+    mysqli_close($conn); // Close connection
+    header("location:display.php"); // redirects to all records page
+    exit;
+}
+else
+{
+    echo "Error deleting record"; // display error message if not delete
+}
+?>
+
+
+
+//edit.php
+<?php
+
+include "dbConn.php"; // Using database connection file here
+
+$id = $_GET['id']; // get id through query string
+
+$qry = mysqli_query($conn,"select QUANTITY,PRICE from customer_products where RFID='$id'"); // select query
+
+$data = mysqli_fetch_array($qry); // fetch data
+
+
+if(isset($_POST['update'])) // when click on Update button
+{
+    $qyt = $_POST['quantity'];
+    $edit = mysqli_query($conn,"update customer_products set QUANTITY='$qyt' where RFID='$id'");
+
+    if($edit)
+    {
+        mysqli_close($conn); // Close connection
+        header("location:display.php"); // redirects to all records page
+        exit;
+    }
+    else
+    {
+        echo mysqli_error();
+    }
+}
+?>
+
+<h3>Update Data</h3>
+
+<form method="POST">
+  <input type="text" name="quantity" placeholder="Enter Number of Quantity" Required>
+  <input type="submit" name="update" value="Update">
+</form>
+
+
+//display.php
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  color: Chartreuse;
+  text-align: center;
+}
+h3{
+  color: DarkOrange;
+  text-align: center;
+}
+</style>
+</head>
+<title> Welcome to Dubai Supermarket </title>
+<body>
+  <style>
+  body {background-image: url("background.jpg");}
+  </style>
+  <h1>WELCOME TO SMARTTROLLEY CART</h1>
+  <h3>LIST OF ALL THE PRODCTS YOU SCANNED</h3>
+  <?php
+  include 'C:\xampp\htdocs\TARP\TARP\Costumer_Table.php'
+  ?>
+</body>
+</html>
