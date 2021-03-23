@@ -9,7 +9,7 @@ $del = mysqli_query($conn,"delete from customer_products where RFID = '$id'"); /
 if($del)
 {
     mysqli_close($conn); // Close connection
-    header("location:home.php"); // redirects to all records page
+    header("location:cart.php"); // redirects to all records page
     exit;
 }
 else
