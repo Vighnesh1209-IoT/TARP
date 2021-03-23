@@ -17,7 +17,7 @@ if(isset($_POST['update'])) // when click on Update button
     if($edit)
     {
         mysqli_close($conn); // Close connection
-        header("location:display.php"); // redirects to all records page
+        header("location:home.php"); // redirects to all records page
         exit;
     }
     else
@@ -28,7 +28,6 @@ if(isset($_POST['update'])) // when click on Update button
 ?>
 
 <h3>Update Data</h3>
-
 <form method="POST">
   <input type="text" name="quantity" placeholder="Enter Number of Quantity" Required>
   <input type="submit" name="update" value="Update">
