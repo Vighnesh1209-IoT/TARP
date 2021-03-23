@@ -3,4 +3,4 @@ HTML:
   edit.php
   cart.php
   home.php
-  coustumer_form.php
+  customer_form.php
