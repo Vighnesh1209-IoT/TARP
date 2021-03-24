@@ -18,7 +18,7 @@ else
 }
 }
 elseif (isset($_POST['Goback'])) {
-  header("location:home.php"); // redirects to all records page
+  header("location:cart.php"); // redirects to all records page
   exit;
 }
 ?>
