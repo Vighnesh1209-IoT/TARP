@@ -1,5 +1,5 @@
 <?php
-$key = "420";
+$key = "492939";
 $api_key_value = "dd";
 
 //Getting value form Nodemcu
