@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   }
 }
 
-include 'C:\xampp\htdocs\TARP\TARP\dbConn.php';
+include 'C:\xampp\htdocs\TARP\dbConn.php';
 
 //fetching data from default_products for one specific RFIDtag
 $sql = "SELECT RFID, NAME, TYPE, PRICE FROM default_products WHERE RFID = $key";
