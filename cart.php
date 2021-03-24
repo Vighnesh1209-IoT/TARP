@@ -36,7 +36,7 @@
   <h3>LIST OF ALL THE PRODCTS YOU SCANNED</h3>
   <div id="table_bg">
   <?php
-  include 'C:\xampp\htdocs\TARP\Costumer_Table.php'
+  include 'Costumer_Table.php'
   ?>
   </div>
   <script type="text/javascript">
@@ -44,7 +44,7 @@
       function showData()
       {
         $.ajax({
-          url: 'C:\xampp\htdocs\TARP\fetch_data.php',
+          url: 'fetch_data.php',
           type: 'POST',
           data: {action : 'showProcess'},
           dataType: 'html',
