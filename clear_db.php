@@ -7,7 +7,7 @@ if(isset($_POST['Submit'])) // when click on Update button
     $UID = $_POST['userID'];
     $PID = $_POST['password'];
     if(($_POST['userID'] == "Admin") && ($_POST['password'] == "1234")){
-    $trun = mysqli_query($conn,'TRUNCATE TABLE customer_products');
+    $trun = mysqli_query($conn,'TRUNCATE customer_products');
 
     if($trun)
     {
