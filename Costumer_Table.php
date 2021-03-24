@@ -1,5 +1,5 @@
 <?php
-include 'C:\xampp\htdocs\TARP\TARP\fetch_data.php';
+include 'C:\xampp\htdocs\TARP\fetch_data.php';
 $total = 0;
 $final_amount = 0;
 $sql = "SELECT RFID, NAME, TYPE, QUANTITY, PRICE, FINAL_AMOUNT FROM customer_products";
