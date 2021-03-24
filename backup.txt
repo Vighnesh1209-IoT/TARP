@@ -210,3 +210,17 @@ h3{
   ?>
 </body>
 </html>
+
+
+
+Customer_Information:
+//if(isset($_POST["Submit"]))
+//{
+//$sql2 = "INSERT INTO customer_information1(NAME, EMAILID, PHONENO, ADDRESS , GENDER) VALUES ('" . $name . "', '" . $emailid . "', '" . $mobno . "', '" . $address . "','" .$gender ."')";
+//if ($conn->query($sql2) === TRUE) {
+//      echo "New record created successfully";
+//  }
+//  else {
+//      echo "Error: " . $sql2 . "<br>" . $conn->error;
+//  }
+//}
