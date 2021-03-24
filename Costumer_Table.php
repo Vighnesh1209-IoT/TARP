@@ -44,4 +44,4 @@ if ($result = $conn->query($sql)) {
           <td><?php echo "TOTAL AMOUNT"?></td>
           <td><?php echo "$final_amount"?></td>
           <td><?php echo ""?></td>
-          <td><a href="clear_db.php<?php echo $row['RFID']; ?>">Admin</a>
+          <td><a href="clear_db.php">Admin</a>
