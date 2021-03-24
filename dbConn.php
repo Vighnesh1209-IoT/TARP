@@ -5,9 +5,9 @@
 //$servername = "localhost";
 
 
-$username = "pc9gdJUd4g";
-$password = "iHlzW9PAfa";
-$dbname = "pc9gdJUd4g";
+$username = "dcgNbHB57Z";
+$password = "TSpAmk2kf6";
+$dbname = "dcgNbHB57Z";
 $servername = "remotemysql.com";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
