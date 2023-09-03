@@ -87,21 +87,21 @@ The Smart Trolley System is a mobile self-checkout solution designed for retail 
 The front-end of the Smart Trolley System is a user-friendly website that allows customers to interact with the system. It includes:
 
 - Homepage
-<screenshots/homepage.png>
+![](screenshots/homepage.png)
 
 - About Page
-<screenshots/custome info.png>
+![](screenshots/customerInfo.png)
 
 - Shopping Cart
-<screenshots/cons billing page.png>
+![](screenshots/consumerBillingPage.png)
 
 - Contact Page
 
 - Razorpay Integration for Payments
-<screenshots/razorpay implementation.png>
+![](screenshots/razorPayImplementation.png)
 
 - Admin Login for Database Management
-<screenshots/login page.png>
+![<](screenshots/loginPage.png)
 
 ## Back End Implementation
 
@@ -119,7 +119,7 @@ The back-end of the system is implemented using PHP and MySQL for database manag
 
 - Customer Support Form
 
-<screenshots/database implementation.png>
+![](screenshots/dataBaseImplementaion.png)
 
 ## Arduino Implementation
 
