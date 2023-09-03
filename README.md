@@ -76,7 +76,7 @@ The Smart Trolley System is a mobile self-checkout solution designed for retail 
 
 ## Block Diagram
 
-![Block Diagram](link_to_block_diagram_image)
+![Block Diagram](![Block Diagram](<screenshots/block diagram.png>))
 
 ## Front End Implementation
 
