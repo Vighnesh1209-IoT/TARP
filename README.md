@@ -76,23 +76,32 @@ The Smart Trolley System is a mobile self-checkout solution designed for retail 
 
 ## Block Diagram
 
-![Block Diagram](![Block Diagram](<screenshots/block diagram.png>))
+<screenshots/block diagram.png>
+
+## Flow Chart
+
+<screenshots/flow chart.png>
 
 ## Front End Implementation
 
 The front-end of the Smart Trolley System is a user-friendly website that allows customers to interact with the system. It includes:
 
 - Homepage
+<screenshots/homepage.png>
 
 - About Page
+<screenshots/custome info.png>
 
 - Shopping Cart
+<screenshots/cons billing page.png>
 
 - Contact Page
 
 - Razorpay Integration for Payments
+<screenshots/razorpay implementation.png>
 
 - Admin Login for Database Management
+<screenshots/login page.png>
 
 ## Back End Implementation
 
@@ -110,6 +119,8 @@ The back-end of the system is implemented using PHP and MySQL for database manag
 
 - Customer Support Form
 
+<screenshots/database implementation.png>
+
 ## Arduino Implementation
 
 The NodeMCU is programmed in Embedded C to handle RFID scanning and communication with the web server. It uses HTTP POST requests to send RFID data to the server.
@@ -121,5 +132,3 @@ The Smart Trolley System prototype includes both hardware and web components. It
 ## Conclusion
 
 The Smart Trolley System is designed to improve the shopping experience by reducing checkout times and providing a convenient, contactless shopping option. It streamlines the purchasing process and offers benefits for both customers and retailers.
-
-Feel free to customize this `readme.md` file with specific details about your project, including links to relevant images or documentation.
